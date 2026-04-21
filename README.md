@@ -123,6 +123,14 @@ Form pre-filled with student details.
 
 ---
 
+⚠️ Common Errors
+
+If pipeline fails:
+
+❌ pip not found → install python3-pip
+❌ pytest not found → pip install pytest
+❌ Port already used → kill old Flask process 
+
 ## License
 
 MIT License
