@@ -139,6 +139,10 @@ If pipeline fails:
 
 ✔ Configure SMTP OR remove mail step
 
+## Email Notification:
+
+Updating a line to check wether email notification is triggering
+
 ## License
 
 MIT License
