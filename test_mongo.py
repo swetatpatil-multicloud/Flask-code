@@ -1,6 +1,6 @@
 from pymongo import MongoClient
 
-client = MongoClient("mongodb+srv://flaskuser:Flask123@swetapatil.nlqpeax.mongodb.net/mydb")
+client = MongoClient("mongodb+srv://flaskuser:******@swetapatil.nlqpeax.mongodb.net/mydb")
 
 try:
     client.admin.command('ping')
