@@ -131,6 +131,14 @@ If pipeline fails:
 ❌ pytest not found → pip install pytest
 ❌ Port already used → kill old Flask process 
 
+🔴 Build failure:
+
+✔ Fix Jenkinsfile → use venv
+
+🟡 Email failure:
+
+✔ Configure SMTP OR remove mail step
+
 ## License
 
 MIT License
