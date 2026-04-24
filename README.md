@@ -1,153 +1,129 @@
-# Student Registration System
+# Flask Web Application: Jenkins CI/CD Pipeline
+This repository contains a simple Flask web application integrated with a Jenkins CI/CD Pipeline. The goal of this project is to automate the lifecycle of the application—from dependency installation and unit testing to final deployment.
 
-A simple **Flask** web application to manage student records with **MongoDB** as the backend database. Users can **add, view, update, and delete** student details.
+## Project Overview
+The pipeline is defined in a Jenkinsfile (Declarative Pipeline) and performs the following:
 
----
+Build: Sets up a virtual environment and installs dependencies.
 
-## Features
+Test: Executes unit tests using pytest to ensure code quality.
 
-* List all students on the home page
-* Add a new student
-* Update existing student details
-* Delete a student with confirmation
-* Simple and responsive UI using Bootstrap
+Deploy: Automatically deploys the application to a staging environment upon successful testing.
 
----
+## Prerequisites
+Before running the pipeline, ensure the following are configured on your Jenkins server:
 
-## Tech Stack
+Jenkins Installed: Jenkins should be running on a Linux/Windows VM or Cloud instance.
 
-* **Backend:** Python, Flask
-* **Database:** MongoDB (via Flask-PyMongo)
-* **Frontend:** HTML, Jinja2 templates, Bootstrap 5
-* **Environment Variables:** Managed via `.env` file
+Python & Pip: Python 3.x must be installed on the Jenkins agent.
 
----
+Plugins: Install the following Jenkins plugins:
 
-## Setup Instructions
+Git Plugin
 
-### 1. Clone the repository
+Pipeline
 
-```bash
-git clone <your-repo-url>
-cd <repo-folder>
-```
+Email Extension Plugin (for notifications)
 
-### 2. Create and activate a virtual environment
+Credentials: Configure GitHub credentials in Jenkins to allow repository cloning.
 
-```bash
-python -m venv venv
-# Activate venv
-# Windows:
-venv\Scripts\activate
-# Linux / Mac:
+## Repository Structure
+app.py: The core Flask application.
+
+test_app.py: Unit tests for the application.
+
+requirements.txt: List of Python dependencies.
+
+Jenkinsfile: The automation script for CI/CD.
+
+README.md: Project documentation.
+
+## CI/CD Pipeline Stages
+### 1. Build Stage
+The pipeline initializes a Python virtual environment and installs the required packages:
+
+Bash
+python3 -m venv venv
 source venv/bin/activate
-```
-
-### 3. Install dependencies
-
-```bash
 pip install -r requirements.txt
-```
 
-**`requirements.txt` example:**
+### 2. Test Stage
+Automated tests are triggered using pytest. If any test fails, the pipeline stops immediately to prevent faulty code from reaching deployment.
 
-```
-Flask
-Flask-PyMongo
-python-dotenv
-bson
-```
+Bash
+pytest test_app.py
 
-### 4. Configure environment variables
+### 3. Deploy Stage
+Once tests pass, the application is deployed. In this setup, the deployment is simulated by starting the Flask server or moving files to a staging directory.
 
-Create a `.env` file in the project root:
+### Notifications & Triggers
+GitHub WebHook Trigger: The pipeline is configured to trigger automatically whenever a push is made to the main branch.
 
-```
-MONGO_URI=<your-mongodb-connection-string>
-SECRET_KEY=<your-secret-key>
-```
+Email Alerts: Jenkins will send an automated email notification to the administrator:
 
-### 5. Run the application
+### Success: When the build, test, and deployment are successful.
 
-```bash
-python app.py
-```
+### Failure: If any stage fails, providing a link to the build logs.
 
-Open your browser at: [http://localhost:8000](http://localhost:8000)
+## How to Use
+Fork this repository to your own GitHub account. (However, instead of forking the repo, I have directly clone it)
 
----
+In Jenkins, create a new Pipeline job.
 
-## Project Structure
+Under Pipeline script from SCM, select Git and paste your forked repository URL.
 
-```
-project/
-│
-├── templates/
-│   ├── base.html
-│   ├── index.html
-│   ├── add_student.html
-│   ├── update_student.html
-│
-├── app.py
-├── requirements.txt
-└── .env
-```
+Specify the branch as */main.
 
----
+Click Save and Build Now.
 
-## Screenshots
+##  Pipeline Execution (Screenshots)
+#### I have used port 5001 instead of 5000 as port 5000 is occupied on another service.
 
-**Home Page**
-Lists all students with Edit/Delete buttons.
-- <img width="1902" height="607" alt="image" src="https://github.com/user-attachments/assets/a58a6a6d-4978-4769-8074-232e4d31e69d" />
+### Before adding data: 
+<img width="940" height="377" alt="image" src="https://github.com/user-attachments/assets/a4aca7b1-c7b4-458a-b92d-38984bfc3d7c" />
 
+### Adding new record:
+<img width="940" height="469" alt="image" src="https://github.com/user-attachments/assets/0d6cdd20-7a92-46b7-bebc-d3e5238541bc" />
 
-**Add Student**
-Form to add a new student.
-- <img width="1897" height="801" alt="image" src="https://github.com/user-attachments/assets/d65d25c3-ebb5-410a-adb1-e130ad7c5878" />
+### After adding a new record:
+<img width="940" height="441" alt="image" src="https://github.com/user-attachments/assets/02c28cf8-d33d-4977-8ebf-16328dc39a4b" />
 
+### The new records are updated in DB too:
+<img width="940" height="464" alt="image" src="https://github.com/user-attachments/assets/f19b88a8-5922-422f-9b8a-de9e08f5513c" />
 
-**Update Student**
-Form pre-filled with student details.
-- <img width="1905" height="897" alt="image" src="https://github.com/user-attachments/assets/04febf01-879f-431f-ab07-abcfb993acf1" />
+### Output of Python app.py file from VS code:
+<img width="940" height="676" alt="image" src="https://github.com/user-attachments/assets/4140aeb4-aa19-461a-9ba8-1f54af372226" />
 
+### Screenshot of EC2 Python app.py:
+<img width="940" height="468" alt="image" src="https://github.com/user-attachments/assets/c40509d9-1467-42ae-9106-2ca98a6438c1" />
 
+### EC2 instance screenshot:
+<img width="940" height="416" alt="image" src="https://github.com/user-attachments/assets/593e725f-032d-4d58-beaa-5eead08ae48e" />
+<img width="940" height="412" alt="image" src="https://github.com/user-attachments/assets/d8cf3fda-cdfa-4a61-a778-01881872076b" />
 
----
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-## Notes
+## MONGO_URI=mongodb+srv://flaskuser:*******@swetapatil.nlqpeax.mongodb.net/mydb
+## SECRET_KEY=*******
 
-* Make sure MongoDB is running and accessible via the URI in `.env`
-* Delete action includes a confirmation page to prevent accidental deletion
-* Uses `ObjectId` from `bson` to work with MongoDB document IDs
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
----
+### Pipeline Stage View:
 
-⚠️ Common Errors
+<img width="940" height="318" alt="image" src="https://github.com/user-attachments/assets/2c8e3a9f-a83c-4552-bcea-39fa75511b6f" />
 
-If pipeline fails:
+<img width="940" height="399" alt="image" src="https://github.com/user-attachments/assets/2b75fbac-ee1b-47a4-ab71-5dfd3df5c0f7" />
 
-❌ pip not found → install python3-pip
-❌ pytest not found → pip install pytest
-❌ Port already used → kill old Flask process 
+<img width="940" height="322" alt="image" src="https://github.com/user-attachments/assets/f7389b40-1435-4cb6-ab80-67d71d66360f" />
 
-🔴 Build failure:
+<img width="619" height="849" alt="image" src="https://github.com/user-attachments/assets/c57419c2-3b11-419a-9246-7e23092b65bc" />
 
-✔ Fix Jenkinsfile → use venv
+<img width="672" height="558" alt="image" src="https://github.com/user-attachments/assets/b1bcd5ac-c7df-48d6-879e-5880bd0ee00a" />
 
-🟡 Email failure:
+### First production release
+<img width="940" height="411" alt="image" src="https://github.com/user-attachments/assets/4b0d2b8d-6afa-4cb2-aa46-f74893236e7c" />
 
-✔ Configure SMTP OR remove mail step
+<img width="940" height="412" alt="image" src="https://github.com/user-attachments/assets/dacd92cf-6757-453f-80a0-cc03a1e87c0d" />
 
-## Email Notification:
-
-Updating a line to check wether email notification is triggering
-
-## License
-
-MIT License
-
----
-
-
+<img width="940" height="394" alt="image" src="https://github.com/user-attachments/assets/8b63b366-ac36-428a-a7fa-5a7d32c8742f" />
 
