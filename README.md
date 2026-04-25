@@ -101,10 +101,27 @@ Click Save and Build Now.
 <img width="940" height="416" alt="image" src="https://github.com/user-attachments/assets/593e725f-032d-4d58-beaa-5eead08ae48e" />
 <img width="940" height="412" alt="image" src="https://github.com/user-attachments/assets/d8cf3fda-cdfa-4a61-a778-01881872076b" />
 
+### Jenkins > Flask pipelines > stages:
+<img width="940" height="492" alt="image" src="https://github.com/user-attachments/assets/e38170cd-5910-44fd-9913-437951e966d1" />
+
+<img width="940" height="534" alt="image" src="https://github.com/user-attachments/assets/8b8b57dd-3ae4-46d0-9442-059755b26768" />
+<img width="940" height="475" alt="image" src="https://github.com/user-attachments/assets/135f0a75-ea03-496f-bce5-eeed2033ed00" />
+
+
+
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ## MONGO_URI=mongodb+srv://flaskuser:*******@swetapatil.nlqpeax.mongodb.net/mydb
 ## SECRET_KEY=*******
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+### Troubleshooting
+1) Jenkins build fails > Check console output logs to fix the issue
+2) pip not found > Configure Python in Jenkins
+3) Email not sent > Do proper SMTP settings in Jenkins
+
+### Conclusion
+
+This project successfully demonstrates a fully automated CI/CD pipeline using Jenkins for a Flask application, ensuring continuous integration, testing, and deployment.
 
