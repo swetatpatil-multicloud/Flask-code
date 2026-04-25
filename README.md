@@ -108,22 +108,3 @@ Click Save and Build Now.
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-### Pipeline Stage View:
-
-<img width="940" height="318" alt="image" src="https://github.com/user-attachments/assets/2c8e3a9f-a83c-4552-bcea-39fa75511b6f" />
-
-<img width="940" height="399" alt="image" src="https://github.com/user-attachments/assets/2b75fbac-ee1b-47a4-ab71-5dfd3df5c0f7" />
-
-<img width="940" height="322" alt="image" src="https://github.com/user-attachments/assets/f7389b40-1435-4cb6-ab80-67d71d66360f" />
-
-<img width="619" height="849" alt="image" src="https://github.com/user-attachments/assets/c57419c2-3b11-419a-9246-7e23092b65bc" />
-
-<img width="672" height="558" alt="image" src="https://github.com/user-attachments/assets/b1bcd5ac-c7df-48d6-879e-5880bd0ee00a" />
-
-### First production release
-<img width="940" height="411" alt="image" src="https://github.com/user-attachments/assets/4b0d2b8d-6afa-4cb2-aa46-f74893236e7c" />
-
-<img width="940" height="412" alt="image" src="https://github.com/user-attachments/assets/dacd92cf-6757-453f-80a0-cc03a1e87c0d" />
-
-<img width="940" height="394" alt="image" src="https://github.com/user-attachments/assets/8b63b366-ac36-428a-a7fa-5a7d32c8742f" />
-
